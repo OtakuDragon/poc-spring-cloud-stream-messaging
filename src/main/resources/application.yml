@@ -1,0 +1,25 @@
+server:
+  port: 8888
+spring:
+  cloud:
+    stream:
+      bindings:
+        output:
+          destination: myQ
+          content-type: application/json
+        input:
+          destination: myQ
+          content-type: application/json
+          group: group1 #Uma mensagem que chega em uma fila vai ser entregue uma vez para cada grupo.
+        myCustomInputChannel:
+          destination: myCustomQ
+          content-type: application/json
+        myCustomOutputChannel:
+          destination: myCustomQ
+          content-type: application/json
+      kafka:
+       binder:
+          brokers: localhost #Este exemplo utiliza kafka como message broker com as configurações padrões, o Spring Cloud Stream também suporta RabbitMQ.
+          
+      
+            
